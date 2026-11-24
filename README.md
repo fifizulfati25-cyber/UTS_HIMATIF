@@ -139,12 +139,14 @@ php artisan route:list --path=kegiatan
 Pengujian fitur mencakup halaman publik, login dan registrasi, verifikasi anggota, pembatasan hak akses, pengelolaan rapat, absensi, riwayat, serta CRUD program kerja.
 
 ## Keterbatasan Project Praktikum
+Beberapa keterbatasan aplikasi saat ini meliputi:
 
-- Foto dokumentasi kegiatan belum tersedia di project.
-- Halaman kontak masih menggunakan teks penanda sampai kontak resmi dikonfirmasi pengurus.
-- Pastikan data visi-misi dan struktur organisasi yang ditampilkan sudah disetujui pengurus.
-- Session dan file JSON berada di komputer/server lokal; lakukan backup serta jaga akses folder penyimpanan.
-- Project ini untuk tugas praktikum, bukan penerapan autentikasi produksi.
+1. **Penyimpanan data:** Fitur CRUD Program Kerja menggunakan Laravel Session dengan `SESSION_DRIVER=file` sesuai ketentuan praktikum, sehingga data bergantung pada masa berlaku session.
+2. **Penyimpanan akun:** Sistem autentikasi menggunakan penyimpanan file lokal sehingga belum dirancang untuk penggunaan banyak pengguna secara bersamaan dalam lingkungan produksi.
+3. **Verifikasi anggota:** Pendaftaran anggota memerlukan verifikasi pengurus sebelum pengguna mendapatkan akses ke sistem absensi.
+4. **Informasi organisasi:** Visi, misi, dan struktur organisasi mengacu pada informasi HIMATIF UCIC periode 2026/2027. Informasi dapat diperbarui mengikuti perubahan kepengurusan.
+5. **Pengembangan aplikasi:** Sistem masih berupa prototipe akademik dan memerlukan pengembangan keamanan, penyimpanan data, serta pengujian lanjutan sebelum digunakan secara resmi oleh
+6. **Dokumentasi:** Foto dokumentasi kegiatan belum tersedia di project.
 
 ## Screenshot
 
