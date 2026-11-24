@@ -150,4 +150,9 @@ Beberapa keterbatasan aplikasi saat ini meliputi:
 
 ## Screenshot
 
-Screenshot aplikasi akan ditambahkan setelah dokumentasi selesai.
+1. Beranda
+2. Dashboard_aAnggota
+3. Dashboard_pengguna
+4. Login_Anggota&penguru
+5. Profile
+6. Proker
