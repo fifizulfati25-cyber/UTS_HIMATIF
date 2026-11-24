@@ -1,0 +1,7 @@
+@extends('layouts.portal')
+
+@section('content')
+    <p class="eyebrow">Khusus Pengurus</p><h1 class="page-heading">{{ $judulHalaman }}</h1><p class="intro">Cocokkan NIM pendaftar dengan daftar anggota resmi sebelum menyetujui. Pendaftar baru belum dapat mengisi absensi.</p>
+    @if (count($anggotaMenunggu) === 0)<p class="empty">Tidak ada pendaftaran yang menunggu verifikasi.</p>@else<div class="table-wrap"><table><thead><tr><th>Nama</th><th>NIM</th><th>Email</th><th>Status</th><th>Aksi</th></tr></thead><tbody>@foreach ($anggotaMenunggu as $anggota)<tr><td>{{ $anggota['nama'] }}</td><td>{{ $anggota['nim'] }}</td><td>{{ $anggota['email'] }}</td><td><span class="badge pending">Menunggu</span></td><td><form method="POST" action="{{ route('pengurus.anggota.approve', $anggota['id']) }}">@csrf @method('PATCH')<button class="button button-primary button-small" type="submit">Verifikasi anggota</button></form></td></tr>@endforeach</tbody></table></div>@endif
+    <h2 style="margin-top:30px">Anggota terverifikasi</h2>@if (count($anggotaTerverifikasi) === 0)<p class="empty">Belum ada anggota terverifikasi.</p>@else<div class="table-wrap"><table><thead><tr><th>Nama</th><th>NIM</th><th>Email</th><th>Status</th></tr></thead><tbody>@foreach ($anggotaTerverifikasi as $anggota)<tr><td>{{ $anggota['nama'] }}</td><td>{{ $anggota['nim'] }}</td><td>{{ $anggota['email'] }}</td><td><span class="badge verified">Terverifikasi</span></td></tr>@endforeach</tbody></table></div>@endif
+@endsection

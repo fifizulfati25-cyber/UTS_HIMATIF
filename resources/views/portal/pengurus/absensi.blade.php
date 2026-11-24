@@ -1,0 +1,8 @@
+@extends('layouts.portal')
+
+@section('content')
+    <p class="eyebrow">Khusus Pengurus</p><h1 class="page-heading">{{ $judulHalaman }}</h1><p class="intro">Rekap ini mencakup catatan dari seluruh akun anggota terverifikasi.</p>
+    <h2>Rekap per rapat</h2><div class="table-wrap"><table><thead><tr><th>Rapat</th><th>Tanggal</th><th>Status</th><th>Jumlah hadir</th></tr></thead><tbody>@foreach ($rapatTerhitung as $rapat)<tr><td>{{ $rapat['judul'] }}</td><td>{{ \Carbon\Carbon::parse($rapat['tanggal'])->locale('id')->translatedFormat('d F Y') }}</td><td><span class="badge {{ $rapat['status'] === 'Dibuka' ? 'active' : 'inactive' }}">{{ $rapat['status'] }}</span></td><td>{{ $rapat['jumlah_hadir'] }}</td></tr>@endforeach</tbody></table></div>
+    <h2 style="margin-top:30px">Rekap per anggota</h2>@if (count($rekapAnggota) === 0)<p class="empty">Belum ada anggota terverifikasi.</p>@else<div class="table-wrap"><table><thead><tr><th>NIM</th><th>Nama</th><th>Jumlah hadir</th></tr></thead><tbody>@foreach ($rekapAnggota as $anggota)<tr><td>{{ $anggota['nim'] }}</td><td>{{ $anggota['nama'] }}</td><td>{{ $anggota['jumlah_hadir'] }}</td></tr>@endforeach</tbody></table></div>@endif
+    <h2 style="margin-top:30px">Catatan kehadiran</h2>@if (count($daftarAbsensi) === 0)<p class="empty">Belum ada kehadiran tercatat.</p>@else<div class="table-wrap"><table><thead><tr><th>NIM</th><th>Nama anggota</th><th>Rapat</th><th>Waktu hadir</th></tr></thead><tbody>@foreach ($daftarAbsensi as $absensi)<tr><td>{{ $absensi['nim'] }}</td><td>{{ $absensi['nama'] }}</td><td>{{ $absensi['rapat'] }}</td><td>{{ $absensi['waktu_hadir'] }}</td></tr>@endforeach</tbody></table></div>@endif
+@endsection
